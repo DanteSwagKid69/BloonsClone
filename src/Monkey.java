@@ -4,12 +4,16 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class Monkey extends JLabel{
     int xPos;
     int yPos;
     int height = 100;
     int width = 100;
+
+    int reachRadius = 70;
 
     Game game;
 
@@ -43,7 +47,45 @@ public class Monkey extends JLabel{
         return new ImageIcon(dimg);
     }
 
-    public void Shoot(int[] pos) {
+    public void CheckForBalloon(ArrayList<Balloon> balloonList) {
+
+        if (balloonList.isEmpty()) return;
+
+    //    System.out.println(balloonList.get(0).xPos);
+
+        for (var balloon : balloonList) {
+
+            if (CheckCollision(balloon)) {
+                System.out.println("Collisision");
+            }
+        }
+
+    }
+
+    public void ShowRange() {
+        JPanel rangeX = new JPanel();
+        rangeX.setBounds(this.xPos - reachRadius, this.yPos - reachRadius, reachRadius * 2, reachRadius * 2);
+        rangeX.setBackground(Color.red);
+
+
+
+        this.game.getFrame().add(rangeX);
+
+    }
+
+
+
+    public boolean CheckCollision(Balloon balloon) {
+        int xPos = this.xPos - reachRadius;
+        int yPos = this.yPos - reachRadius;
+        int width = reachRadius * 2;
+        int height = reachRadius * 2;
+
+        if (xPos < balloon.xPos + balloon.width && xPos + width > balloon.xPos && yPos < balloon.yPos + balloon.height && yPos + height > balloon.yPos) return true;
+        else return false;
+    }
+
+    public void Shoot(Balloon targetBallon) {
 
     }
 }

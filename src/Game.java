@@ -20,6 +20,7 @@ public class Game {
         long targetTime = 1000 / FPS;
 
         Monkey monkey = new Monkey(100, 100, this);
+        Monkey monkey2 = new Monkey(300, 400, this);
 
 
         String[] turnPos = {"x_+_225", "y_-_100", "x_+_100", "y_-_10", "x_+_300", "y_+_400", "x_+_800"};
@@ -27,7 +28,8 @@ public class Game {
         int[] spawnPoint = {-30, 400};
 
         //List containing all Balloons in this wave
-        List<Balloon> balloonList = new ArrayList<Balloon>();
+        ArrayList<Balloon> balloonList = new ArrayList<Balloon>();
+
 
         while (true) {
             //Starting the time system
@@ -42,6 +44,9 @@ public class Game {
             for (Balloon ba : balloonList) {
                 ba.Move(track);
             }
+
+            monkey2.CheckForBalloon(balloonList);
+            monkey2.ShowRange();
 
 
 
