@@ -3,16 +3,20 @@ import java.awt.*;
 
 public class MyFrame extends JFrame {
 
-    MyFrame(){
-        this.setTitle("Virus");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
+    MyPanel panel;
 
-        this.setSize(420,420);
-        this.setVisible(true);
+    MyFrame() {
 
-        ImageIcon image = new ImageIcon("milton_real.jpg");
-        this.setIconImage(image.getImage());
-        this.getContentPane().setBackground(new Color(9, 130, 0));
+
+
+        this.setSize(800,600);
+        this.setLayout(null);
+
+        this.setBackground(Color.blue);
+
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
     }
+
+
 }
